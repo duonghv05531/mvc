@@ -28,11 +28,11 @@
                             <div class="product-content">
                                 <h5 class="product-name"><a href="#"><?php echo e($p->name); ?></a></h5>
                                 <div class="ratings">
-                                    <?php for($i = 0; $i < $p->getStar(); $i++): ?>
+                                    <?php for($i = 0; $i < $p->star; $i++): ?>
                                         <a href="#"><i class="ti-star"></i></a>
                                     <?php endfor; ?>
                                 </div>
-                                <p class="price"><?php echo e($p->price); ?></p>
+                                <p class="price"><?php echo e($p->price); ?> $</p>
                             </div>
                         </div>
                     </div>

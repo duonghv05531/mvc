@@ -14,6 +14,7 @@
             <th>Số sao</th>
             <th>Ngày tạo</th>
             <th>Ngày cập nhật</th>
+            <th>Người tạo</th>
             <th>Lượt xem</th>
             <th>Hành động
                 <br>
@@ -33,6 +34,7 @@
                     <td><?php echo e($p->star); ?></td>
                     <td><?php echo e($p->created_at); ?></td>
                     <td><?php echo e($p->updated_at); ?></td>
+                    <td><?php echo e($p->updated_by); ?></td>
                     <td><?php echo e($p->views); ?></td>
                     <td>
                         <a class="btn btn-sm btn-danger"

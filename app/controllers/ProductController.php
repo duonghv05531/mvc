@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+session_start();
+
 use App\Models\Product;
 use App\Models\Category;
 

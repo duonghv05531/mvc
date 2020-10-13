@@ -5,7 +5,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
     <!-- All CSS -->
     <link rel="stylesheet" href="{{ bsUrl . 'public/css/bootstrap.min.css' }}" />
     <link rel="stylesheet" href="{{ bsUrl . 'public/css/themify-icons.css' }}" />
@@ -26,20 +25,18 @@
                         <span>email: info@eiser.com</span>
                     </div>
                     <div class="col text-right">
-                        <span>Thẻ quà tặng</span>
-                        <span>Theo dõi đơn</span>
-                        <div class="lang d-inline-flex">
-                            <span>Ngôn ngữ </span>
-                            <ul class="lang-dropdown">
-                                <li>Tiếng Anh</li>
-                                <li>Tiếng Việt</li>
-                            </ul>
-                        </div>
+                        @if (isset($_SESSION['user_name']))
+                            <span><a href="{{ bsUrl . 'admin-products-list' }}">Quản trị</a></span>
+                            <span><a href="{{ bsUrl . 'logout' }}">Đăng xuất</a></span>
+                        @else
+                            <span><a href="{{ bsUrl . 'login' }}">Đăng nhập</a></span>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
+
             <nav class="navbar">
                 <!-- Site logo -->
                 <a href="home-01.html" class="logo">
@@ -60,9 +57,6 @@
                             @endforeach
                         </ul>
                     </li>
-                    <li><a href="#">Dịch vụ</a></li>
-                    <li><a href="#">Dự án</a></li>
-                    <li><a href="{{ bsUrl . 'admin-products-list' }}">Đăng nhập</a></li>
                     <li><a href="form.html">Liên hệ</a></li>
                 </ul>
 
@@ -109,43 +103,6 @@
     @yield('content')
 
 
-    <section class="instagram">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="sec-heading">
-                        <h3 class="sec-title">Theo dõi chúng tôi</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="images/instagram/1.jpg" alt="" />
-                        <i class="ti-instagram"></i>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="images/instagram/2.jpg" alt="" />
-                        <i class="ti-instagram"></i>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="images/instagram/3.jpg" alt="" />
-                        <i class="ti-instagram"></i>
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="images/instagram/4.jpg" alt="" />
-                        <i class="ti-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Instagram end -->
 
     <!-- Footer strat -->

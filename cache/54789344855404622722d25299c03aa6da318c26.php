@@ -10,6 +10,12 @@
                     <br>
                     <label for="cate_name">Tên danh mục:</label>
                     <input type="text" class="form-control" name="cate_name">
+                    <small class="form-text text-danger">
+                        <?php if(isset($cate_nameerr)): ?>
+                            <?php echo e($cate_nameerr); ?>
+
+                        <?php endif; ?>
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="slug">Slug:</label>
@@ -18,6 +24,12 @@
                 <div class="form-group">
                     <label for="desc">Mô tả:</label>
                     <input type="text" class="form-control" name="desc">
+                    <small class="form-text text-danger">
+                        <?php if(isset($descerr)): ?>
+                            <?php echo e($descerr); ?>
+
+                        <?php endif; ?>
+                    </small>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" name="show_menu" type="checkbox" value="1" id="show_menu">

@@ -8,6 +8,8 @@ use App\Controllers\ProductController;
 use App\Controllers\Admins\HomeController;
 use App\Controllers\Admins\CategoryController;
 use App\Controllers\Admins\UserController;
+use App\Controllers\LoginController;
+
 // Đọc về eloquent model
 // https://laravel.com/docs/8.x/eloquent#retrieving-single-models
 
@@ -61,6 +63,14 @@ switch ($url) {
     case 'admin-users-list';
         $ctr = new UserController();
         $ctr->index();
+        break;
+    case 'login';
+        $ctr = new LoginController();
+        $ctr->index();
+        break;
+    case 'logout';
+        $ctr = new LoginController();
+        $ctr->logout();
         break;
     default:
         # code...

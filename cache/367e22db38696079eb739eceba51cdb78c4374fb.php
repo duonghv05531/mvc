@@ -9,6 +9,12 @@
                     <br>
                     <label for="formGroupExampleInput">Tên danh mục</label>
                     <input type="text" class="form-control" name="cate_name" value="<?php echo e($cate->cate_name); ?>">
+                    <small class="form-text text-danger">
+                        <?php if(isset($cate_nameerr)): ?>
+                            <?php echo e($cate_nameerr); ?>
+
+                        <?php endif; ?>
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Slug</label>
@@ -17,6 +23,12 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Mô tả</label>
                     <input type="text" class="form-control" name="desc" value="<?php echo e($cate->desc); ?>">
+                    <small class="form-text text-danger">
+                        <?php if(isset($descerr)): ?>
+                            <?php echo e($descerr); ?>
+
+                        <?php endif; ?>
+                    </small>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" name="show_menu" type="checkbox" value="1" id="show_menu" <?php if($cate->show_menu == 1): ?>

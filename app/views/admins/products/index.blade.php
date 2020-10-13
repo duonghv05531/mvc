@@ -14,6 +14,7 @@
             <th>Số sao</th>
             <th>Ngày tạo</th>
             <th>Ngày cập nhật</th>
+            <th>Người tạo</th>
             <th>Lượt xem</th>
             <th>Hành động
                 <br>
@@ -33,6 +34,7 @@
                     <td>{{ $p->star }}</td>
                     <td>{{ $p->created_at }}</td>
                     <td>{{ $p->updated_at }}</td>
+                    <td>{{ $p->updated_by }}</td>
                     <td>{{ $p->views }}</td>
                     <td>
                         <a class="btn btn-sm btn-danger"

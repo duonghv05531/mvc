@@ -9,6 +9,11 @@
                     <br>
                     <label for="formGroupExampleInput">Tên danh mục</label>
                     <input type="text" class="form-control" name="cate_name" value="{{ $cate->cate_name }}">
+                    <small class="form-text text-danger">
+                        @if (isset($cate_nameerr))
+                            {{ $cate_nameerr }}
+                        @endif
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Slug</label>
@@ -17,6 +22,11 @@
                 <div class="form-group">
                     <label for="formGroupExampleInput">Mô tả</label>
                     <input type="text" class="form-control" name="desc" value="{{ $cate->desc }}">
+                    <small class="form-text text-danger">
+                        @if (isset($descerr))
+                            {{ $descerr }}
+                        @endif
+                    </small>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" name="show_menu" type="checkbox" value="1" id="show_menu" @if ($cate->show_menu == 1)

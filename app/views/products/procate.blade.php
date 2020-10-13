@@ -31,7 +31,7 @@
                                 <div class="product-content">
                                     <h5 class="product-name"><a href="#">{{ $p->name }}</a></h5>
                                     <div class="ratings">
-                                        @for ($i = 0; $i < $p->getStar(); $i++)
+                                        @for ($i = 0; $i < $p->star; $i++)
                                             <a href="#"><i class="ti-star"></i></a>
                                         @endfor
                                     </div>

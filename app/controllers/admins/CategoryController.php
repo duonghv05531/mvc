@@ -2,13 +2,14 @@
 
 namespace App\Controllers\Admins;
 
+session_start();
+
 use App\Controllers\BaseController;
 use App\Models\Product;
 use App\Models\Category;
 
 class CategoryController extends BaseController
 {
-    private $pro;
     private $cate;
     function __construct()
     {
@@ -28,10 +29,28 @@ class CategoryController extends BaseController
     {
         if (isset($_POST['btn'])) {
             $data = $_POST;
-            $model = new Category();
-            $model->fill($data);
-            $model->save();
-            \header('location:' . \bsUrl . 'admin-categories-list');
+            $cate_nameerr = "";
+            $descerr = "";
+            if ($data['cate_name'] == "") {
+                $err = 1;
+                $cate_nameerr = "Tên danh mục không được để trống";
+            }
+            if ($data['desc'] == "") {
+                $err = 1;
+                $descerr = "Mô tả không được để trống";
+            }
+            if ($err == 1) {
+                $this->render('admins.categories.add', [
+                    'cate_nameerr' => $cate_nameerr,
+                    'descerr' => $descerr
+                ]);
+            } else {
+                $model = new Category();
+                $model->fill($data);
+                $model->created_by = $_SESSION['user_name'];
+                $model->save();
+                \header('location:' . \bsUrl . 'admin-categories-list');
+            }
         } else {
             $this->render('admins.categories.add', []);
         }
@@ -46,10 +65,29 @@ class CategoryController extends BaseController
             if (isset($_POST['btn'])) {
                 $data = $_POST;
                 $model = Category::find($id);
-                $data['show_menu'] = isset($data['show_menu']) ? $data['show_menu'] : "";
-                $model->fill($data);
-                $model->save();
-                \header('location:' . \bsUrl . 'admin-categories-list');
+                $cate_nameerr = "";
+                $descerr = "";
+                if ($data['cate_name'] == "") {
+                    $err = 1;
+                    $cate_nameerr = "Tên danh mục không được để trống";
+                }
+                if ($data['desc'] == "") {
+                    $err = 1;
+                    $descerr = "Mô tả không được để trống";
+                }
+                if ($err == 1) {
+                    $this->render('admins.categories.edit', [
+                        'cate' => $model,
+                        'cate_nameerr' => $cate_nameerr,
+                        'descerr' => $descerr,
+
+                    ]);
+                } else {
+                    $data['show_menu'] = isset($data['show_menu']) ? $data['show_menu'] : "";
+                    $model->fill($data);
+                    $model->save();
+                    \header('location:' . \bsUrl . 'admin-categories-list');
+                }
             } else {
                 $cate = Category::find($id);
                 if ($cate) {

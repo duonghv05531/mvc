@@ -8,11 +8,17 @@
                     <br> <br>
                     <label for="formGroupExampleInput">Tên sản phẩm</label>
                     <input type="text" class="form-control" name="name" value="{{ $pro->name }}">
+                    @if (isset($nameerr))
+                        <small class="text-danger">{{ $nameerr }}</small>
+                    @endif
                 </div>
 
                 <div class=" form-group">
                     <label for="formGroupExampleInput2">Giá</label>
                     <input type="text" class="form-control" name="price" value="{{ $pro->price }}">
+                    @if (isset($priceerr))
+                        <small class="text-danger">{{ $priceerr }}</small>
+                    @endif
                 </div>
                 <div class=" form-group">
                     <label for="formGroupExampleInput2">Danh mục</label>
@@ -29,10 +35,16 @@
                     <br><br>
                     <label for="formGroupExampleInput">Sao</label>
                     <input type="text" class="form-control" name="star" value="{{ $pro->star }}">
+                    @if (isset($starerr))
+                        <small class="text-danger">{{ $starerr }}</small>
+                    @endif
                 </div>
                 <div class=" form-group">
                     <label for="formGroupExampleInput2">Lượt xem</label>
                     <input type="text" class="form-control" name="views" value="{{ $pro->views }}">
+                    @if (isset($viewserr))
+                        <small class="text-danger">{{ $viewserr }}</small>
+                    @endif
                 </div>
             </div>
             <div class="col-md-12">
@@ -51,12 +63,18 @@
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tiêu đề</label>
                             <textarea name="short_desc" id="desc" cols="90" rows="10">{{ $pro->short_desc }}</textarea>
+                            @if (isset($short_descerr))
+                                <small class="text-danger">{{ $short_descerr }}</small>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class=" form-group">
                             <label for="formGroupExampleInput2">Chi tiết</label> <br>
                             <textarea name="detail" id="detail" cols="90" rows="10">{{ $pro->detail }}</textarea>
+                            @if (isset($detailerr))
+                                <small class="text-danger">{{ $detailerr }}</small>
+                            @endif
                         </div>
                     </div>
                 </div>

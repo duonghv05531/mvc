@@ -12,7 +12,7 @@ class Category extends Model
         'cate_name',
         'slug',
         'desc',
-        'show_menu'
+        'show_menu',
     ];
     public function products()
     {

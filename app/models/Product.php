@@ -17,12 +17,6 @@ class Product extends Model
         'star',
         'views'
     ];
-    function getStar()
-    {
-        $ps = Product::find($this->id);
-        $star = $ps->star;
-        return $star;
-    }
     function getCateName()
     {
         $cn = Category::find($this->cate_id);
