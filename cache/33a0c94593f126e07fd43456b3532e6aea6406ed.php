@@ -30,6 +30,7 @@
                             <span><a href="<?php echo e(bsUrl . 'logout'); ?>">Đăng xuất</a></span>
                         <?php else: ?>
                             <span><a href="<?php echo e(bsUrl . 'login'); ?>">Đăng nhập</a></span>
+                            <span><a href="<?php echo e(bsUrl . 'logup'); ?>">Đăng ký</a></span>
                         <?php endif; ?>
                     </div>
                 </div>

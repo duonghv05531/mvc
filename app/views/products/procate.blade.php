@@ -21,7 +21,7 @@
                         <div class="col-sm-4">
                             <div class="product-item">
                                 <figure class="product-thumb">
-                                    <img src="{{ bsUrl . '/public/images/products/1.jpg' }}" alt="" />
+                                    <img src="{{ bsUrl . $p->image }}" alt="" />
                                     <div class="action-links">
                                         <a href="#" class="quick-view icon"><i class="ti-eye"></i></a>
                                         <a href="#" class="wishlist icon"><i class="ti-heart"></i></a>

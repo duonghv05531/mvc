@@ -30,6 +30,7 @@
                             <span><a href="{{ bsUrl . 'logout' }}">Đăng xuất</a></span>
                         @else
                             <span><a href="{{ bsUrl . 'login' }}">Đăng nhập</a></span>
+                            <span><a href="{{ bsUrl . 'logup' }}">Đăng ký</a></span>
                         @endif
                     </div>
                 </div>

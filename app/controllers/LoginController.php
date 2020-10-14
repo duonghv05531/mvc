@@ -2,10 +2,7 @@
 
 namespace App\Controllers;
 
-session_start();
-
 use App\Models\Category;
-use App\Models\Product;
 use App\Models\User;
 
 class LoginController extends BaseController
@@ -14,7 +11,6 @@ class LoginController extends BaseController
     function __construct()
     {
         $this->cate = Category::where('show_menu', 1)->get();
-        $this->pro = Product::all();
 
         if (isset($_SESSION['user_name'])) {
             \header('location:' . \bsUrl);
@@ -23,7 +19,7 @@ class LoginController extends BaseController
     function index()
     {
         if (isset($_POST['btn'])) {
-            $us = $_POST['user_name'];
+            $us = $_POST['name'];
             $ps = $_POST['password'];
             $userr = "";
             $pserr = "";
@@ -69,6 +65,57 @@ class LoginController extends BaseController
         if (isset($_SESSION['user_name'])) {
             unset($_SESSION['user_name']);
             \header('location:' . \bsUrl . 'login');
+        }
+    }
+    function logup()
+    {
+        $pserr = "";
+        $userr = "";
+        $emailerr = "";
+        $err = "";
+        if (isset($_SESSION['user_name'])) {
+            \header('location:' . \bsUrl);
+        }
+
+        if (isset($_POST['btn'])) {
+            $data = $_POST;
+            if ($data['password'] == "") {
+                $err = 1;
+                $pserr = "Mật khẩu không được để trống";
+            }
+            if ($data['email'] == "") {
+                $err = 1;
+                $emailerr = "Email không được để trống";
+            }
+            if ($data['name'] == "") {
+                $err = 1;
+                $userr = "Tên đăng nhập không được để trống";
+            } else {
+                $userCheck = User::where('name', $data['name'])->first();
+                if ($userCheck) {
+                    $err = 1;
+                    $userr = "Tên đăng nhập đã được sử dụng";
+                }
+            }
+            if ($err != 1) {
+                $model = new User();
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $data['role'] = 1;
+                $model->fill($data);
+                $model->save();
+                \header('location:' . \bsUrl . 'login');
+            } else {
+                $this->render('logup', [
+                    'cate' => $this->cate,
+                    'userr' => $userr,
+                    'emailerr' => $emailerr,
+                    'passworderr' => $pserr
+                ]);
+            }
+        } else {
+            $this->render('logup', [
+                'cate' => $this->cate
+            ]);
         }
     }
 }

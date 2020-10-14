@@ -4,6 +4,10 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="col-md-9" style="margin: auto">
             <div class="row">
+                <div class="col-md-9" style="margin: auto">
+                    <br>
+                    <h3 class="text-center text-info">TẠO MỚI DANH MỤC</h3>
+                </div>
                 <div class="col-4" style="margin: auto">
                     <div class="form-group">
                         <br><br>

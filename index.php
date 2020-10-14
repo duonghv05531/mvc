@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once './vendor/autoload.php';
 require_once './config/db.php';
 require_once './config/helpers.php';
@@ -27,6 +27,10 @@ switch ($url) {
     case 'procate';
         $ctr = new ProductController();
         $ctr->proCate($id);
+        break;
+    case 'info';
+        $ctr = new ProductController();
+        $ctr->info($id);
         break;
     case 'admin-products-list';
         $ctr = new HomeController();
@@ -72,6 +76,11 @@ switch ($url) {
         $ctr = new LoginController();
         $ctr->logout();
         break;
+    case 'logup';
+        $ctr = new LoginController();
+        $ctr->logup();
+        break;
+
     default:
         # code...
         break;

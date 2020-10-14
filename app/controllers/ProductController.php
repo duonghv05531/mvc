@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-session_start();
 
 use App\Models\Product;
 use App\Models\Category;
@@ -39,6 +38,14 @@ class ProductController extends BaseController
             'procate' => $procate,
             'cate' => $this->cate,
             'nofi' => $nofi
+        ]);
+    }
+    function info($id)
+    {
+        $info = Product::find($id);
+        $this->render('products.info', [
+            'cate' => $this->cate,
+            'info' => $info
         ]);
     }
 }

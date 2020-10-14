@@ -2,8 +2,6 @@
 
 namespace App\Controllers\Admins;
 
-session_start();
-
 use App\Controllers\BaseController;
 use App\Models\Product;
 use App\Models\Category;

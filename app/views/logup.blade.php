@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Đăng nhập')
+@section('title', 'Đăng ký')
 
 @section('content')
     <div class="col-6 offset-3">
@@ -19,6 +19,13 @@
                 @endif
             </div>
             <div class="form-group">
+                <label for="user_name">Email</label>
+                <input type="text" class="form-control" name="email" id="user_name">
+                @if (isset($emailerr))
+                    <small id="userHelp" class="form-text text-muted">{{ $emailerr }}</small>
+                @endif
+            </div>
+            <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control" id="password">
                 @if (isset($pserr))
@@ -29,7 +36,7 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> --}}
-            <button type="submit" name="btn" class="btn btn-danger">Đăng nhập</button>
+            <button type="submit" name="btn" class="btn btn-danger">Đăng ký</button>
             <br><br>
         </form>
     </div>
