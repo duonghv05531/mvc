@@ -19,10 +19,10 @@ class HomeController extends BaseController
     private $viewserr;
     function __construct()
     {
-        if (!isset($_SESSION['user_name'])) {
+        if (!isset($_SESSION[AUTH])) {
             \header('location:' . \bsUrl . 'login');
         } else {
-            if ($_SESSION['role'] == 1) {
+            if ($_SESSION[AUTH]['role'] == 1) {
                 \header('location:' . \bsUrl);
             }
         }

@@ -7,7 +7,7 @@ use App\Models\User;
 
 class LoginController extends BaseController
 {
-    private $cate;
+    protected $cate;
     function __construct()
     {
         $this->cate = Category::where('show_menu', 1)->get();
@@ -34,9 +34,13 @@ class LoginController extends BaseController
                 $checkUs = User::where('name', $us)->first();
                 if ($checkUs != \false) {
                     if (\password_verify($ps, $checkUs->password)) {
-                        $_SESSION['user_name'] = $checkUs->name;
-                        $_SESSION['email'] = $checkUs->email;
-                        $_SESSION['role'] = $checkUs->role;
+                        $data = [
+                            'id' => $checkUs->id,
+                            'name' => $checkUs->name,
+                            'email' => $checkUs->email,
+                            'role' => $checkUs->role
+                        ];
+                        $_SESSION[AUTH] = $data;
                         \header('location:' . \bsUrl);
                     } else {
                         $err = 1;
@@ -62,8 +66,8 @@ class LoginController extends BaseController
     }
     function logout()
     {
-        if (isset($_SESSION['user_name'])) {
-            unset($_SESSION['user_name']);
+        if (isset($_SESSION[AUTH])) {
+            unset($_SESSION[AUTH]);
             \header('location:' . \bsUrl . 'login');
         }
     }
@@ -73,7 +77,7 @@ class LoginController extends BaseController
         $userr = "";
         $emailerr = "";
         $err = "";
-        if (isset($_SESSION['user_name'])) {
+        if (isset($_SESSION[AUTH])) {
             \header('location:' . \bsUrl);
         }
 

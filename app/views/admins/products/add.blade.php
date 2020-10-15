@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <br> <br>
                                 <label for="short_desc">Tiêu đề</label> <br>
-                                <textarea name="short_desc" id="shortdesc" cols="90" rows="10"></textarea>
+                                <textarea name="short_desc" id="shortdesc" cols="45" rows="10"></textarea>
                                 @if (isset($short_descerr))
                                     <small class="text-danger">{{ $short_descerr }}</small>
                                 @endif
@@ -77,7 +77,7 @@
                             <br><br>
                             <div class=" form-group">
                                 <label for="detail">Chi tiết</label> <br>
-                                <textarea name="detail" id="detail" cols="90" rows="10"></textarea>
+                                <textarea name="detail" id="detail" cols="45" rows="10"></textarea>
                                 @if (isset($detailerr))
                                     <small class="text-danger">{{ $detailerr }}</small>
                                 @endif
@@ -86,6 +86,8 @@
                         </div>
                         <div class="col-10" style="margin: auto">
                             <button type="submit" name="btn" class="btn btn-outline-success">Thêm</button>
+                            <br>
+                            <br>
                         </div>
                     </div>
 
@@ -95,9 +97,4 @@
     </form>
 @endsection
 @section('js')
-    <script>
-        CKEDITOR.replace('short_desc');
-        CKEDITOR.replace('detail');
-
-    </script>
 @endsection

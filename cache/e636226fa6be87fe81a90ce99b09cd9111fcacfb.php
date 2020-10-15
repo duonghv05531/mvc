@@ -20,7 +20,8 @@
                             <figure class="product-thumb">
                                 <img src="<?php echo e(bsUrl . $p->image); ?>" alt="" />
                                 <div class="action-links">
-                                    <a href="#" class="quick-view icon"><i class="ti-eye"></i></a>
+                                    <a href="<?php echo e(bsUrl . 'info?id=' . $p->id); ?>" class="quick-view icon"><i
+                                            class="ti-eye"></i></a>
                                     <a href="#" class="wishlist icon"><i class="ti-heart"></i></a>
                                     <a href="#" class="add-cart icon"><i class="ti-shopping-cart"></i></a>
                                 </div>

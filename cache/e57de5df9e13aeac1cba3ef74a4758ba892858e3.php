@@ -48,7 +48,6 @@
                 </div>
             </div>
             <div class="col-md-12">
-
                 <div class="form-group">
                     <label for="formGroupExampleInput">Ảnh</label>
                     <br>
@@ -62,7 +61,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tiêu đề</label>
-                            <textarea name="short_desc" id="desc" cols="90" rows="10"><?php echo e($pro->short_desc); ?></textarea>
+                            <br>
+                            <textarea name="short_desc" id="desc" cols="60" rows="10"><?php echo e($pro->short_desc); ?></textarea>
                             <?php if(isset($short_descerr)): ?>
                                 <small class="text-danger"><?php echo e($short_descerr); ?></small>
                             <?php endif; ?>
@@ -71,7 +71,7 @@
                     <div class="col-md-6">
                         <div class=" form-group">
                             <label for="formGroupExampleInput2">Chi tiết</label> <br>
-                            <textarea name="detail" id="detail" cols="90" rows="10"><?php echo e($pro->detail); ?></textarea>
+                            <textarea name="detail" id="detail" cols="60" rows="10"><?php echo e($pro->detail); ?></textarea>
                             <?php if(isset($detailerr)): ?>
                                 <small class="text-danger"><?php echo e($detailerr); ?></small>
                             <?php endif; ?>
@@ -85,11 +85,6 @@
     </form>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js'); ?>
-    <script>
-        CKEDITOR.replace('desc');
-        CKEDITOR.replace('detail');
-
-    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admins.layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\php2\mvc\app\views/admins/products/edit.blade.php ENDPATH**/ ?>

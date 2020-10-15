@@ -25,7 +25,7 @@
                         <span>email: info@eiser.com</span>
                     </div>
                     <div class="col text-right">
-                        @if (isset($_SESSION['user_name']))
+                        @if (isset($_SESSION[AUTH]))
                             <span><a href="{{ bsUrl . 'admin-products-list' }}">Quản trị</a></span>
                             <span><a href="{{ bsUrl . 'logout' }}">Đăng xuất</a></span>
                         @else
