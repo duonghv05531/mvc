@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Comment;
 
 class ProductController extends BaseController
 {
@@ -12,13 +13,18 @@ class ProductController extends BaseController
     protected $cate;
     function __construct()
     {
-        $this->pro = Product::join('categories', 'products.cate_id', '=', 'categories.id')->where('show_menu', 1)->get();
+        $this->pro = Product::join('categories', 'products.cate_id', '=', 'categories.id')
+            ->select('products.id', 'products.name', 'products.image', 'products.price', 'products.short_desc', 'categories.cate_name')
+            ->where('show_menu', 1)
+            ->get();
         $this->cate = Category::where('show_menu', 1)->get();
     }
     function index()
     {
         // $pro = Product::all()->join('categories', 'products.cate_id', '=', 'categories.id');
-
+        // echo "<pre>";
+        // \var_dump($this->pro);
+        // die;
         $this->render('products.list', [
             'pro' => $this->pro,
             'cate' => $this->cate
@@ -40,12 +46,30 @@ class ProductController extends BaseController
             'nofi' => $nofi
         ]);
     }
+
     function info($id)
     {
         $info = Product::find($id);
+        $comments = Comment::join('users', 'comments.user_id', '=', 'users.id')
+            ->select('users.name', 'comments.content', 'comments.id')
+            ->where('comments.pro_id', $id)
+            ->limit(3)
+            ->orderBy('id', 'desc')
+            ->get();
         $this->render('products.info', [
             'cate' => $this->cate,
-            'info' => $info
+            'info' => $info,
+            'comments' => $comments
         ]);
+    }
+    function comment($id)
+    {
+        $data = $_POST;
+        $model = new Comment();
+        $model->user_id = $_SESSION[\AUTH]['id'];
+        $model->pro_id = $id;
+        $model->content = $data['content'];
+        $model->save();
+        \header('location:' . bsUrl . 'info?id=' . $id);
     }
 }

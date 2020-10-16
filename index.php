@@ -32,6 +32,10 @@ switch ($url) {
         $ctr = new ProductController();
         $ctr->info($id);
         break;
+    case 'comment';
+        $ctr = new ProductController();
+        $ctr->comment($id);
+        break;
     case 'admin-products-list';
         $ctr = new HomeController();
         $ctr->index();
@@ -67,6 +71,10 @@ switch ($url) {
     case 'admin-users-list';
         $ctr = new UserController();
         $ctr->index();
+        break;
+    case 'admin-users-add';
+        $ctr = new UserController();
+        $ctr->add();
         break;
     case 'login';
         $ctr = new LoginController();

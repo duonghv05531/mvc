@@ -27,6 +27,8 @@
                                 </div>
                             </figure>
                             <div class="product-content">
+
+                                <h5 class="product-name"><a href="#">{{ $p->id }}</a></h5>
                                 <h5 class="product-name"><a href="#">{{ $p->name }}</a></h5>
                                 <div class="ratings">
                                     @for ($i = 0; $i < $p->star; $i++)
