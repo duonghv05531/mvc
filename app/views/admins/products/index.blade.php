@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ $p->id }}</td>
                     <td>{{ $p->getCateName() }}</td>
-                    <td>{{ $p->name }}</td>
+                    <td><a href="{{ bsUrl . 'info?id=' . $p->id }}">{{ $p->name }}</a></td>
                     <td><img src="{{ $p->image }}" alt="" width="100px"></td>
                     <td>{{ $p->price }}</td>
                     <td>{{ $p->short_desc }}</td>

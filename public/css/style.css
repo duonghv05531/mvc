@@ -80,7 +80,7 @@ section {
 }
 
 .btn-default:hover {
-  background-color: #fff;
+  background-color: #bd08b7;
   -webkit-box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.05);
 }

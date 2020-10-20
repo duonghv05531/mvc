@@ -27,7 +27,7 @@ class HomeController extends BaseController
             }
         }
         $this->pro = Product::all();
-        $this->cate = Category::all();
+        $this->cate = Category::where('show_menu', 1)->get();
     }
     function index()
     {

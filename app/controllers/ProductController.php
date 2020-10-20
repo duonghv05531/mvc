@@ -51,7 +51,7 @@ class ProductController extends BaseController
     {
         $info = Product::find($id);
         $comments = Comment::join('users', 'comments.user_id', '=', 'users.id')
-            ->select('users.name', 'comments.content', 'comments.id')
+            ->select('users.name', 'users.avatar', 'comments.content', 'comments.id')
             ->where('comments.pro_id', $id)
             ->limit(3)
             ->orderBy('id', 'desc')

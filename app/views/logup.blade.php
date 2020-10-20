@@ -6,7 +6,7 @@
     <div class="col-6 offset-3">
         <br>
         <br>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="user_name">Tên đăng nhập</label>
                 <input type="text" class="form-control" name="name" id="user_name">
@@ -28,6 +28,13 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control" id="password">
+                @if (isset($pserr))
+                    <small id="passwordHelp" class="form-text text-muted">{{ $pserr }}</small>
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="password">Avatar</label>
+                <input type="file" name="avatar" class="form-control" id="avatar" style="border: none">
                 @if (isset($pserr))
                     <small id="passwordHelp" class="form-text text-muted">{{ $pserr }}</small>
                 @endif

@@ -11,6 +11,7 @@ class UserController extends BaseController
     protected $userr;
     protected $pserr;
     protected $emailerr;
+    protected $avatarerr;
     function __construct()
     {
         if (!isset($_SESSION[AUTH])) {
@@ -55,16 +56,17 @@ class UserController extends BaseController
                 // \var_dump($data['name']);
                 // die;
                 $usCheck = User::where('name', $data['name'])->get();
-                if ($usCheck) {
-                    $err = 1;
-                    $this->userr = "Tên tài khoản đã được sử dụng";
-                } else {
+                $arr = (array)$usCheck;
+                if (!$arr) {
                     $data['password'] = password_hash($data['password'], \PASSWORD_DEFAULT);
                     $model = new User();
                     $model->fill($data);
                     $model->save();
                     \header('location:' . \bsUrl . 'admin-users-list');
                     die;
+                } else {
+                    $err = 1;
+                    $this->userr = "Tên tài khoản đã được sử dụng";
                 }
             }
             if ($err == 1) {
@@ -77,5 +79,78 @@ class UserController extends BaseController
         } else {
             $this->render('admins.users.add');
         }
+    }
+    function edit($id)
+    {
+        if (!isset($id)) {
+            \header('location:' . \bsUrl . 'admin-users-list');
+        } else {
+
+            if (isset($_POST['btn'])) {
+                $data = $_POST;
+                if ($_FILES['avatar']['size'] > 0) {
+                    $filename = $_FILES['avatar']['name'];
+                    \move_uploaded_file($_FILES['avatar']['tmp_name'], './public/images/users/' . $filename);
+                    $data['avatar'] = './public/images/users/' . $filename;
+                } else {
+                    $err = 1;
+                    $this->avatarerr = "Avatar chưa tải lên";
+                }
+                if ($data['email'] == "") {
+                    $err = 1;
+                    $this->emailerr = "Email không được để trống";
+                }
+                if ($data['name'] == "") {
+                    $err = 1;
+                    $this->userr = "Tên tài khoản không được để trống";
+                } else {
+                    // \var_dump($data['name']);
+                    // die;
+                    $usCheck = User::where('name', $data['name'])
+                        ->where('id', '!=', $id)
+                        ->get();
+                    $arr = (array)$usCheck;
+                    if (!$arr) {
+                        $err = 1;
+                        $this->userr = "Tên tài khoản đã được sử dụng";
+                    } else {
+                        $model = User::find($id);
+                        if ($data['password'] == "") {
+                            $data['password'] = $model->password;
+                        } else {
+                            $data['password'] = password_hash($data['password'], \PASSWORD_DEFAULT);
+                        }
+                        $model->fill($data);
+                        $model->save();
+                        \header('location:' . \bsUrl . 'admin-users-list');
+                        die;
+                    }
+                }
+                if ($err == 1) {
+                    $this->render('admins.users.add', [
+                        'userr' => $this->userr,
+                        'pserr' => $this->pserr,
+                        'emailerr' => $this->emailerr,
+                        'avatar' => $this->avatarerr
+                    ]);
+                }
+            } else {
+                $user = User::find($id);
+                $this->render('admins.users.edit', [
+                    'user' => $user
+                ]);
+            }
+        }
+    }
+    function disable($id)
+    {
+        $model = User::find($id);
+        if ($model->status == 1) {
+            $model->status = 0;
+        } else {
+            $model->status = 1;
+        }
+        $model->save();
+        \header('location:' . \bsUrl . 'admin-users-list');
     }
 }

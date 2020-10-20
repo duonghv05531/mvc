@@ -76,6 +76,14 @@ switch ($url) {
         $ctr = new UserController();
         $ctr->add();
         break;
+    case 'admin-users-edit';
+        $ctr = new UserController();
+        $ctr->edit($id);
+        break;
+    case 'admin-users-disable';
+        $ctr = new UserController();
+        $ctr->disable($id);
+        break;
     case 'login';
         $ctr = new LoginController();
         $ctr->index();

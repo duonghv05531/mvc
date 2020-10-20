@@ -26,7 +26,9 @@
                     </div>
                     <div class="col text-right">
                         @if (isset($_SESSION[AUTH]))
-                            <span><a href="{{ bsUrl . 'admin-products-list' }}">Quản trị</a></span>
+                            @if ($_SESSION[AUTH]['role'] != 1)
+                                <span><a href="{{ bsUrl . 'admin-products-list' }}">Quản trị</a></span>
+                            @endif
                             <span><a href="{{ bsUrl . 'logout' }}">Đăng xuất</a></span>
                         @else
                             <span><a href="{{ bsUrl . 'login' }}">Đăng nhập</a></span>

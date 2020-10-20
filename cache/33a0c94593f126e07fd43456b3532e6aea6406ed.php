@@ -26,7 +26,9 @@
                     </div>
                     <div class="col text-right">
                         <?php if(isset($_SESSION[AUTH])): ?>
-                            <span><a href="<?php echo e(bsUrl . 'admin-products-list'); ?>">Quản trị</a></span>
+                            <?php if($_SESSION[AUTH]['role'] != 1): ?>
+                                <span><a href="<?php echo e(bsUrl . 'admin-products-list'); ?>">Quản trị</a></span>
+                            <?php endif; ?>
                             <span><a href="<?php echo e(bsUrl . 'logout'); ?>">Đăng xuất</a></span>
                         <?php else: ?>
                             <span><a href="<?php echo e(bsUrl . 'login'); ?>">Đăng nhập</a></span>

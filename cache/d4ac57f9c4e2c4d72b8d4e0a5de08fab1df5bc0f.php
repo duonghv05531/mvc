@@ -26,7 +26,7 @@
                 <tr>
                     <td><?php echo e($p->id); ?></td>
                     <td><?php echo e($p->getCateName()); ?></td>
-                    <td><?php echo e($p->name); ?></td>
+                    <td><a href="<?php echo e(bsUrl . 'info?id=' . $p->id); ?>"><?php echo e($p->name); ?></a></td>
                     <td><img src="<?php echo e($p->image); ?>" alt="" width="100px"></td>
                     <td><?php echo e($p->price); ?></td>
                     <td><?php echo e($p->short_desc); ?></td>
