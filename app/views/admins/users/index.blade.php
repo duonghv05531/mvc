@@ -1,5 +1,5 @@
 @extends('admins.layouts.main')
-@section('title', 'Quản trị danh muc')
+@section('title', 'Quản trị tài khoản')
 
 @section('content')
     <table class="table table-hover">

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Danh sách sản phẩm')
+@section('title', 'Sản phẩm theo danh mục')
 
 @section('content')
 
@@ -23,7 +23,8 @@
                                 <figure class="product-thumb">
                                     <img src="{{ bsUrl . $p->image }}" alt="" />
                                     <div class="action-links">
-                                        <a href="#" class="quick-view icon"><i class="ti-eye"></i></a>
+                                        <a href="{{ bsUrl . 'info?id=' . $p->id }}" class="quick-view icon"><i
+                                                class="ti-eye"></i></a>
                                         <a href="#" class="wishlist icon"><i class="ti-heart"></i></a>
                                         <a href="#" class="add-cart icon"><i class="ti-shopping-cart"></i></a>
                                     </div>

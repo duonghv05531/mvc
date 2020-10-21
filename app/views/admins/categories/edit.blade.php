@@ -1,5 +1,5 @@
 @extends('admins.layouts.main')
-@section('title', 'Thêm danh mục')
+@section('title', 'Sửa danh mục')
 @section('content')
     <form method="POST" enctype="multipart/form-data">
         <div class="row">

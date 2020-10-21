@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title', 'Quản trị danh muc'); ?>
+<?php $__env->startSection('title', 'Quản trị tài khoản'); ?>
 
 <?php $__env->startSection('content'); ?>
     <table class="table table-hover">

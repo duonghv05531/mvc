@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Danh sách sản phẩm')
+@section('title', 'Thông tin sản phẩm')
 
 @section('content')
 
@@ -38,7 +38,7 @@
                                 <br>
                                 <h4>Để lại đánh giá</h4>
                                 <form action="{{ bsUrl . 'comment?id=' . $info->id }}" method="POST">
-                                    <label for="content">{{ $_SESSION['username'] }}</label> <br>
+                                    <label for="content">{{ $_SESSION[AUTH]['name'] }}</label> <br>
                                     <input type="text" name="content">
                                     <br><br>
                                     <button style="border: none" type="submit" class="btn-sm btn-default"

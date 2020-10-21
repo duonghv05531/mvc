@@ -53,11 +53,13 @@ class UserController extends BaseController
                 $err = 1;
                 $this->userr = "Tên tài khoản không được để trống";
             } else {
-                // \var_dump($data['name']);
-                // die;
-                $usCheck = User::where('name', $data['name'])->get();
-                $arr = (array)$usCheck;
-                if (!$arr) {
+
+                $usCheck = User::where('name', $data['name'])->count();
+
+
+                if ($usCheck == 0) {
+                    // var_dump(1);
+                    // die;
                     $data['password'] = password_hash($data['password'], \PASSWORD_DEFAULT);
                     $model = new User();
                     $model->fill($data);
@@ -65,6 +67,8 @@ class UserController extends BaseController
                     \header('location:' . \bsUrl . 'admin-users-list');
                     die;
                 } else {
+                    // var_dump(2);
+                    // die;
                     $err = 1;
                     $this->userr = "Tên tài khoản đã được sử dụng";
                 }
@@ -108,12 +112,8 @@ class UserController extends BaseController
                     // die;
                     $usCheck = User::where('name', $data['name'])
                         ->where('id', '!=', $id)
-                        ->get();
-                    $arr = (array)$usCheck;
-                    if (!$arr) {
-                        $err = 1;
-                        $this->userr = "Tên tài khoản đã được sử dụng";
-                    } else {
+                        ->count();
+                    if ($usCheck == 0) {
                         $model = User::find($id);
                         if ($data['password'] == "") {
                             $data['password'] = $model->password;
@@ -124,10 +124,15 @@ class UserController extends BaseController
                         $model->save();
                         \header('location:' . \bsUrl . 'admin-users-list');
                         die;
+                    } else {
+                        $err = 1;
+                        $this->userr = "Tên tài khoản đã được sử dụng";
                     }
                 }
                 if ($err == 1) {
+                    $model = User::find($id);
                     $this->render('admins.users.add', [
+                        'user' => $model,
                         'userr' => $this->userr,
                         'pserr' => $this->pserr,
                         'emailerr' => $this->emailerr,
