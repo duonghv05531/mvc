@@ -19,4 +19,13 @@ class CommentController extends BaseController
         }
         $this->comments = Comment::all();
     }
+
+    function index()
+    {
+        $count = count($this->comments);
+        $this->render('admins.comments.index', [
+            'comment' => $this->comments,
+            'total' => $count
+        ]);
+    }
 }

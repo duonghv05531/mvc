@@ -89,7 +89,6 @@ class UserController extends BaseController
         if (!isset($id)) {
             \header('location:' . \bsUrl . 'admin-users-list');
         } else {
-
             if (isset($_POST['btn'])) {
                 $data = $_POST;
                 if ($_FILES['avatar']['size'] > 0) {
@@ -130,9 +129,9 @@ class UserController extends BaseController
                     }
                 }
                 if ($err == 1) {
-                    $model = User::find($id);
-                    $this->render('admins.users.add', [
-                        'user' => $model,
+                    $user = User::find($id);
+                    $this->render('admins.users.edit', [
+                        'user' => $user,
                         'userr' => $this->userr,
                         'pserr' => $this->pserr,
                         'emailerr' => $this->emailerr,

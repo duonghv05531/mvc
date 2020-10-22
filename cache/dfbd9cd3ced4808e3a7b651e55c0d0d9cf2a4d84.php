@@ -54,7 +54,14 @@
                                         <img src="<?php echo e($c->avatar); ?>" alt="" style="width: 100%">
                                     </div>
                                     <div class="col-md-9">
-                                        <p><strong><?php echo e($c->name); ?></strong> </p>
+                                        <p><strong><?php echo e($c->name); ?></strong>
+                                            <?php if($c->uid == $_SESSION[AUTH]['id']): ?>
+                                                <a
+                                                    href="<?php echo e(bsUrl . 'comment-delete?id=' . $c->id . '&pid=' . $info->id); ?>">Xóa</a>
+                                                | <a href="<?php echo e(bsUrl . 'comment-edit?id=' . $c->id); ?>">Sửa</a>
+                                            <?php endif; ?>
+                                        </p>
+
                                         <p><?php echo e($c->content); ?></p>
                                     </div>
                                 </div>

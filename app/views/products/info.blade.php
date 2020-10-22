@@ -54,7 +54,14 @@
                                         <img src="{{ $c->avatar }}" alt="" style="width: 100%">
                                     </div>
                                     <div class="col-md-9">
-                                        <p><strong>{{ $c->name }}</strong> </p>
+                                        <p><strong>{{ $c->name }}</strong>
+                                            @if ($c->uid == $_SESSION[AUTH]['id'])
+                                                <a
+                                                    href="{{ bsUrl . 'comment-delete?id=' . $c->id . '&pid=' . $info->id }}">Xóa</a>
+                                                | <a href="{{ bsUrl . 'comment-edit?id=' . $c->id }}">Sửa</a>
+                                            @endif
+                                        </p>
+
                                         <p>{{ $c->content }}</p>
                                     </div>
                                 </div>

@@ -36,6 +36,15 @@ switch ($url) {
         $ctr = new ProductController();
         $ctr->comment($id);
         break;
+    case 'comment-delete';
+        $ctr = new ProductController();
+        $ctr->deletecom($id);
+        break;
+    case 'comment-edit';
+        $ctr = new ProductController();
+        $ctr->editcom($id);
+        break;
+        // ket thuc phan client
     case 'admin-products-list';
         $ctr = new HomeController();
         $ctr->index();

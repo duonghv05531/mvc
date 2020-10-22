@@ -51,9 +51,8 @@ class ProductController extends BaseController
     {
         $info = Product::find($id);
         $comments = Comment::join('users', 'comments.user_id', '=', 'users.id')
-            ->select('users.name', 'users.avatar', 'comments.content', 'comments.id')
+            ->select('users.id as uid', 'users.name', 'users.avatar', 'comments.content', 'comments.id')
             ->where('comments.pro_id', $id)
-            ->limit(3)
             ->orderBy('id', 'desc')
             ->get();
         $this->render('products.info', [
@@ -71,5 +70,24 @@ class ProductController extends BaseController
         $model->content = $data['content'];
         $model->save();
         \header('location:' . bsUrl . 'info?id=' . $id);
+    }
+    // sua comment
+
+    function editcom($id)
+    {
+        if ($id == "") {
+        }
+    }
+    function deletecom($id)
+    {
+        $pid = $_GET['pid'];
+        if ($id == "") {
+            header('location:' . bsUrl);
+            die;
+        } else {
+            $model = Comment::find($id);
+            $model->delete();
+            header('location:' . bsUrl . 'info?id=' . $pid);
+        }
     }
 }
