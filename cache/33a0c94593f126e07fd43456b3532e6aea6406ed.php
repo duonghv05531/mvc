@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="<?php echo e(bsUrl . 'public/css/themify-icons.css'); ?>" />
     <link rel="stylesheet" href="<?php echo e(bsUrl . 'public/css/owl.carousel.min.css'); ?>" />
     <link rel="stylesheet" href="<?php echo e(bsUrl . 'public/css/style.css'); ?>" />
-
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
     <title><?php echo $__env->yieldContent('title'); ?></title>
 </head>
 
@@ -185,11 +192,8 @@
     <!-- Footer end -->
 
     <!-- JS -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <?php echo $__env->make('layouts.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->yieldContent('js'); ?>
 </body>
 
 </html>

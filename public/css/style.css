@@ -784,6 +784,10 @@ section {
   .footer .widget {
     margin-bottom: 30px;
   }
+  .img-if {
+    width: 100%;
+    float: left;
+  }
 }
 
 .footer .copyright {

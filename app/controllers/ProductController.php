@@ -75,13 +75,18 @@ class ProductController extends BaseController
 
     function editcom($id)
     {
-        if ($id == "") {
+        $pid = $_GET['pid'];
+        if ($id == "" || $pid == "") {
+            header('location:' . bsUrl);
+            die;
+        } else {
+            
         }
     }
     function deletecom($id)
     {
         $pid = $_GET['pid'];
-        if ($id == "") {
+        if ($id == "" || $pid == "") {
             header('location:' . bsUrl);
             die;
         } else {
